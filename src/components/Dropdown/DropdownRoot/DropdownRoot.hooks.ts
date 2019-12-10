@@ -1,5 +1,6 @@
 import {IDropdownOptionsArray} from "./DropdownRoot";
 import {sendWarning} from "../../../utils/warn";
+import {getEntries} from "../../../utils/dropdown";
 
 export function modifyDropdownOptionsDuplicates(opts: IDropdownOptionsArray): IDropdownOptionsArray {
     let collector: { [key: string]: string } = {};
@@ -7,12 +8,12 @@ export function modifyDropdownOptionsDuplicates(opts: IDropdownOptionsArray): ID
     if (!opts) return [];
 
     collector = opts.reduce( (collection, item) => {
-        const entries = Object.entries(item);
-        if (entries.length > 1) {
+        const keys = Object.keys(item);
+        if (keys.length > 1) {
             sendWarning(`Dropdown options should contain only one pair key-value per array item. For element ${item} it skipped some elements`);
         }
 
-        const [key, value] = entries[0];
+        const {key, value} = getEntries(item);
         if (!collection[key]) collection[key] = value;
 
         return collection;
@@ -34,7 +35,7 @@ export function modifyDropdownOptionsDuplicates(opts: IDropdownOptionsArray): ID
 
 export function modifyDropdownOptionsMultiline(opts: IDropdownOptionsArray): IDropdownOptionsArray {
     return opts.map( (opt) => {
-        const [key, value] = Object.entries(opt)[0];
+        const {key, value} = getEntries(opt);
         return {[key]: value.replace('\n', '')}
     })
 }

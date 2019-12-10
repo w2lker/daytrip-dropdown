@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.hooks';
+import React, {createContext, useEffect, useState} from 'react';
+
 import DropdownHead from "../DropdownHead";
 import DropdownBody from "../DropdownBody";
+
+import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.hooks';
+import {getKey} from "../../../utils/dropdown";
+import lang from "../../../const/lang";
 
 export interface IDropdownOptionsElement {
     [value: string]: string;
@@ -20,6 +24,8 @@ interface IDropdownProps {
     classes?: any;
 }
 
+const DropdownLang = createContext({});
+
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const { options, rows, label, placeholder, selected, classes, onSelect } = props;
     let modifiedOptions: IDropdownOptionsArray;
@@ -30,26 +36,31 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     }, [options]);
 
     const [isOpened, setIsOpened] = useState(false);
-    const toggleDropdownOpen = () => setIsOpened(true);
-    const toggleDropdownClosed = () => setIsOpened(false);
 
     const selectedOption = selected && options && options.length ?
-        options.find( (opt) => Object.keys(opt)[0] === selected )
+        options.find( (opt) => getKey(opt) === selected)
     : null;
 
     return (
+      <DropdownLang.Provider value={lang.dropdown}>
         <div className={classes.root}>
             <DropdownHead
                 label={label}
                 placeholder={placeholder}
-                onClick={toggleDropdownOpen}
+                onClick={() => setIsOpened(!isOpened)}
                 selectedItem={selectedOption}
             />
             {isOpened && (
-                /*TODO: provide props for DropdownBody*/
-                <DropdownBody />
+                <DropdownBody
+                  selected={selected}
+                  options={options}
+                  rows={rows}
+                  onSelect={onSelect}
+                  onClose={() => setIsOpened(false)}
+                />
             )}
         </div>
+      </DropdownLang.Provider>
     );
 };
 
