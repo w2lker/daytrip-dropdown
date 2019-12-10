@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownHead component match snapshot 1`] = `
+"<div className=\\"dropdownHead-wrapper\\" onClick={[Function: mockConstructor]}>
+  <div className=\\"dropdownHead-label\\">
+    Test label
+  </div>
+  <div className=\\"dropdownHead-content\\">
+    value1
+  </div>
+  <div className=\\"dropdownHead-caret dropdownHead-caretReverted\\" />
+</div>"
+`;

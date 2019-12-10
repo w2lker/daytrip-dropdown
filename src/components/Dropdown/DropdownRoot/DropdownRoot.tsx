@@ -3,7 +3,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import DropdownHead from "../DropdownHead";
 import DropdownBody from "../DropdownBody";
 
-import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.hooks';
+import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.helpers';
 import {getKey} from "../../../utils/dropdown";
 import lang from "../../../const/lang";
 
@@ -24,7 +24,7 @@ interface IDropdownProps {
     classes?: any;
 }
 
-const DropdownLang = createContext({});
+export const DropdownLang = createContext({});
 
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const { options, rows, label, placeholder, selected, classes, onSelect } = props;
@@ -45,6 +45,7 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
       <DropdownLang.Provider value={lang.dropdown}>
         <div className={classes.root}>
             <DropdownHead
+                opened={isOpened}
                 label={label}
                 placeholder={placeholder}
                 onClick={() => setIsOpened(!isOpened)}
