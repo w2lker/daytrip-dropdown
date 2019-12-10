@@ -1,6 +1,6 @@
 // @ts-ignore
 
-describe('DropdownRoot hooks', () => {
+describe('DropdownRoot helpers', () => {
     test.todo('modifyDropdownOptionsDuplicates works');
     test.todo('modifyDropdownOptionsMultiline works');
 });
