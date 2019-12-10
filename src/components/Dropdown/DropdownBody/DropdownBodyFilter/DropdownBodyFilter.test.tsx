@@ -1,0 +1,99 @@
+import React from 'react';
+
+import { mount, shallow } from 'enzyme';
+import cases from 'jest-in-case';
+
+import DropdownBodyFilter, { IDropdownBodyFilterProps } from './DropdownBodyFilter';
+import DropdownBodyFilterDecorated from './DropdownBodyFilter.decorators';
+import dropdownBodyFilterStyles from './DropdownBodyFilter.styles';
+
+
+const setup = () => {
+  const classes = {
+    wrapper: 'dropdownBodyFilter-wrapper',
+    input: 'dropdownBodyFilter-input',
+  };
+
+  const classesKeys = Object.keys(classes);
+  const sampleProps: IDropdownBodyFilterProps = {
+    value: 'some filter',
+    onFilterChange: jest.fn(),
+    onSelectPerform: jest.fn(),
+    onSelectNext: jest.fn(),
+    onSelectPrev: jest.fn(),
+    classes,
+  }
+  return {classes, classesKeys, sampleProps}
+};
+
+describe('DropdownBodyFilter component', () => {
+
+  it('match snapshot', () => {
+    const { sampleProps } = setup();
+    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+    expect(component.debug()).toMatchSnapshot();
+  });
+
+  it('renders input', () => {
+      const { classes, sampleProps } = setup();
+    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+    expect(component.find(`.${classes.input}`).length).toBe(1);
+  });
+
+  it('perform change', () => {
+    const { classes, sampleProps } = setup();
+    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+    const newFilter = 'new filter';
+    component.find(`.${classes.input}`).simulate('change', { target: { value: newFilter } });
+    expect(sampleProps.onFilterChange).toBeCalledTimes(1);
+    // @ts-ignore
+    const passedArg = sampleProps.onFilterChange.mock.calls[0][0];
+    expect(passedArg).toBe(newFilter);
+  });
+
+  it('handle switch selections', () => {
+      const { classes, sampleProps } = setup();
+      const preventFunction = jest.fn();
+      const keyPressParams = (keyName: string, shiftKey?: boolean) => ({
+        key: keyName,
+        shiftKey: shiftKey,
+        preventDefault: preventFunction,
+      });
+      const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+      const input = component.find(`.${classes.input}`);
+      input.simulate('keyPress', keyPressParams('Enter'));
+      expect(sampleProps.onSelectPerform).toBeCalledTimes(1);
+      input.simulate('keyPress', keyPressParams('Keyup'));
+      expect(sampleProps.onSelectPrev).toBeCalledTimes(1);
+      input.simulate('keyPress', keyPressParams('Keydown'));
+      expect(sampleProps.onSelectNext).toBeCalledTimes(1);
+      input.simulate('keyPress', keyPressParams('Tab', true));
+      expect(sampleProps.onSelectPrev).toBeCalledTimes(2);
+      input.simulate('keyPress', keyPressParams('Tab'));
+      expect(sampleProps.onSelectNext).toBeCalledTimes(2);
+      expect(preventFunction).toBeCalledTimes(4);
+  });
+});
+
+describe('DropdownBodyFilter styles', () => {
+  it('contains principle classes', () => {
+    const { classesKeys } = setup();
+    expect(dropdownBodyFilterStyles).toBeDefined();
+    classesKeys.forEach((keyValue) => {
+      // @ts-ignore
+      expect(dropdownBodyFilterStyles[keyValue]).toBeDefined();
+    });
+  });
+});
+
+describe('DropdownBodyFilter decorators', () => {
+  it('provides styled classes from decorators', () => {
+    const { classesKeys, sampleProps } = setup();
+    const component = mount(<DropdownBodyFilterDecorated {...sampleProps} />);
+    // @ts-ignore
+    const assignedClasses = component.find('DropdownBodyFilter').props().classes;
+    classesKeys.forEach(keyValue => {
+      expect(assignedClasses[keyValue]).toBeDefined();
+    });
+  });
+});
