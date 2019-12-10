@@ -4,12 +4,14 @@ import {WithStyles} from "react-jss";
 import dropdownBodyStyles from "./DropdownBody.styles";
 import DropdownBodyElement from "./DropdownBodyElement";
 import DropdownBodyFilter from "./DropdownBodyFilter";
-import {getKey} from "../../../utils/dropdown";
+import {getEntries, getKey, getValue} from "../../../utils/dropdown";
 
-export interface IDropdownBodyProps extends Partial<WithStyles<typeof dropdownBodyStyles>> {
-    selected: string;
+export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles> {
+    selected?: string;
     options: IDropdownOptionsArray;
-    onSelect: (val: string) => void;
+    // TODO: add rows handling
+    rows?: number;
+    onSelect?: (val: string) => void;
     onClose: () => void;
 }
 
@@ -19,7 +21,7 @@ const emptyClasses = {
 };
 
 const filterOptions = (filter: string, options: IDropdownOptionsArray): IDropdownOptionsArray =>
-    options.filter( (opt) => Object.values(opt)[0].includes(filter));
+    options.filter( (opt) => getValue(opt).includes(filter));
 
 const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     const { selected, options, onSelect, onClose } = props;
@@ -52,9 +54,9 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     };
 
     const renderElements = filtered.map( (item) => {
-      const [key, content] = Object.entries(item)[0];
+      const {key, value: content} = getEntries(item);
       const handleSelect = () => {
-        onSelect(key);
+        onSelect && onSelect(key);
         onClose();
       };
 
@@ -75,7 +77,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
             value={filter}
             onClose={onClose}
             onFilterChange={setFilter}
-            onSelectPerform={ () => focused && onSelect(focused) }
+            onSelectPerform={ () => focused && onSelect && onSelect(focused) }
             onSelectNext={ focusSwitch(true) }
             onSelectPrev={ focusSwitch(false) }
           />

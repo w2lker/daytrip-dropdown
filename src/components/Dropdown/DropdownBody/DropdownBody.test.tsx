@@ -5,6 +5,7 @@ import { mount } from 'enzyme';
 import DropdownBody, { IDropdownBodyProps } from './DropdownBody';
 import DropdownBodyDecorated from './DropdownBody.decorators';
 import dropdownBodyStyles from './DropdownBody.styles';
+import {getKey, getValue} from "../../../utils/dropdown";
 
 const setup = () => {
   const classes = {
@@ -43,7 +44,7 @@ describe('DropdownBody component', () => {
       const list = component.find(componentContent.element);
       expect(list.length).toBe(2);
       list.forEach( (node, index) => {
-        expect(node.props().content).toBe(Object.values(sampleProps.options[index])[0]);
+        expect(node.props().content).toBe(getValue(sampleProps.options[index]));
       })
   });
 
@@ -51,7 +52,7 @@ describe('DropdownBody component', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
     const filterInput = component.find(componentContent.filterInput);
-    const filterValue = Object.values(sampleProps.options[0])[0];
+    const filterValue = getValue(sampleProps.options[0]);
     filterInput.simulate('change', {target: {value: filterValue}});
     const list = component.find(componentContent.element);
     expect(list.length).toBe(1);
@@ -75,7 +76,7 @@ describe('DropdownBody component', () => {
     component.find(`${componentContent.element} div`).first().simulate('click');
     // @ts-ignore
     const selectedKey = sampleProps.onSelect.mock.calls[0][0];
-    expect(selectedKey).toBe(Object.keys(sampleProps.options[0])[0]);
+    expect(selectedKey).toBe(getKey(sampleProps.options[0]));
   });
 
   it('perform onClose on element selection', () => {
