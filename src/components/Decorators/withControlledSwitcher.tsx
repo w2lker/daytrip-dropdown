@@ -1,4 +1,4 @@
-import React, {ComponentType, useState} from "react";
+import React, { useState } from "react";
 
 export interface IWithControlledSwitcher {
     value?: string;
@@ -17,7 +17,7 @@ export default function <T>(Child: React.ComponentType<T>):React.FC<T & IWithCon
             onSelect && onSelect(value);
         };
         // @ts-ignore
-        return <Child {...other} value={controlledValue} onSelect={setControlledValue}/>
+        return <Child {...other} value={controlledValue} onSelect={setControlledValueWithCallback}/>
     };
 }
 
