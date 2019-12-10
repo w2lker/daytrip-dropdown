@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownBody component match snapshot 1`] = `
+"<DropdownBody selected=\\"val1\\" options={{...}} onSelect={[Function: mockConstructor]} onClose={[Function: mockConstructor]} classes={{...}}>
+  <div className=\\"dropdownBodyFilter-wrapper\\">
+    <JssContextSubscriber value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]}>
+      <WithStyles(DropdownBodyFilter) innerRef={{...}} value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} jssContext={{...}} theme={{...}}>
+        <DropdownBodyFilter value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} classes={{...}}>
+          <div className=\\"DropdownBodyFilter-wrapper-0-2-1\\">
+            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} onBlur={[Function: mockConstructor]} />
+          </div>
+        </DropdownBodyFilter>
+      </WithStyles(DropdownBodyFilter)>
+    </JssContextSubscriber>
+    <div className=\\"dropdownBodyFilter-input\\">
+      <JssContextSubscriber content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]}>
+        <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
+          <DropdownBodyElement content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
+            <div className=\\"DropdownBodyElement-root-0-2-3 DropdownBodyElement-selected-0-2-4\\" onClick={[Function: handleSelect]}>
+              content1
+            </div>
+          </DropdownBodyElement>
+        </WithStyles(DropdownBodyElement)>
+      </JssContextSubscriber>
+      <JssContextSubscriber content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]}>
+        <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
+          <DropdownBodyElement content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
+            <div className=\\"DropdownBodyElement-root-0-2-3\\" onClick={[Function: handleSelect]}>
+              content2
+            </div>
+          </DropdownBodyElement>
+        </WithStyles(DropdownBodyElement)>
+      </JssContextSubscriber>
+    </div>
+  </div>
+</DropdownBody>"
+`;

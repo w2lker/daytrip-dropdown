@@ -2,6 +2,6 @@
 
 exports[`DropdownBodyFilter component match snapshot 1`] = `
 "<div className=\\"dropdownBodyFilter-wrapper\\">
-  <input className=\\"dropdownBodyFilter-input\\" value=\\"some filter\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} />
+  <input className=\\"dropdownBodyFilter-input\\" value=\\"some filter\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} onBlur={[Function: mockConstructor]} />
 </div>"
 `;

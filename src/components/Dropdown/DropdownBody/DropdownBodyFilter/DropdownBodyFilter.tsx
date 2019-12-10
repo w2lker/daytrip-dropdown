@@ -4,14 +4,21 @@ import dropdownBodyFilterStyles from "./DropdownBodyFilter.styles";
 
 export interface IDropdownBodyFilterProps extends WithStyles<typeof dropdownBodyFilterStyles>{
     value: string;
+    onClose?: () => void;
     onFilterChange: (val: string) => void;
     onSelectPerform: () => void;
     onSelectPrev: () => void;
     onSelectNext: () => void;
 }
 
+const emptyClasses = {
+  wrapper: '',
+  input: ''
+};
+
 const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
-    const { value, onFilterChange, onSelectNext, onSelectPerform, onSelectPrev, classes} = props;
+    const { value, onFilterChange, onSelectNext, onSelectPerform, onSelectPrev, onClose} = props;
+    const classes = props.classes || emptyClasses;
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
         inputRef && inputRef.current && inputRef.current.focus && inputRef.current.focus();
@@ -22,6 +29,8 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
 
     const handleFilterKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
       const { key } = event;
+      if (key === 'Escape') return onClose && onClose();
+
       const ifSelectPerform = key === 'Enter';
       const ifSelectPrev = key === 'Keyup' || ( key === 'Tab' && event.shiftKey );
       const ifSelectNext = key === 'Keydown' || ( key == 'Tab' && !event.shiftKey );
@@ -36,6 +45,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
       if (ifSelectNext) return onSelectNext();
 
     };
+    // TODO: handle focus over close
 
     return (
         <div className={classes.wrapper}>
@@ -46,6 +56,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 value={value}
                 onChange={handleFilterChange}
                 onKeyPress={handleFilterKeyPress}
+                onBlur={onClose}
             />
         </div>
     )
@@ -57,10 +68,7 @@ DropdownBodyFilter.defaultProps = {
   onSelectPrev: () => null,
   onSelectNext: () => null,
   onFilterChange: () => null,
-  classes: {
-    wrapper: '',
-    input: '',
-  },
+  onClose: () => null,
 };
 
 export default DropdownBodyFilter;

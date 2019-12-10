@@ -17,6 +17,7 @@ const setup = () => {
   const classesKeys = Object.keys(classes);
   const sampleProps: IDropdownBodyFilterProps = {
     value: 'some filter',
+    onClose: jest.fn(),
     onFilterChange: jest.fn(),
     onSelectPerform: jest.fn(),
     onSelectNext: jest.fn(),
@@ -73,6 +74,22 @@ describe('DropdownBodyFilter component', () => {
       expect(sampleProps.onSelectNext).toBeCalledTimes(2);
       expect(preventFunction).toBeCalledTimes(4);
   });
+
+  it('handle close on input blur', () => {
+    const { classes, sampleProps } = setup();
+    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+    const input = component.find(`.${classes.input}`);
+    input.simulate('blur');
+    expect(sampleProps.onClose).toBeCalledTimes(1);
+  });
+
+  it('handle close on Esc keypress', () => {
+    const { classes, sampleProps } = setup();
+    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
+    const input = component.find(`.${classes.input}`);
+    input.simulate('keyPress', {key: 'Escape'});
+    expect(sampleProps.onClose).toBeCalledTimes(1);
+  })
 });
 
 describe('DropdownBodyFilter styles', () => {
