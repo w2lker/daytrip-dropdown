@@ -1,7 +1,11 @@
 import React from "react";
-import {IDropdownOptionsElement} from "../DropdownRoot/DropdownRoot";
 
-interface IDropdownHeadProps {
+import {WithStyles} from "react-jss";
+
+import {IDropdownOptionsElement} from "../DropdownRoot/DropdownRoot";
+import dropdownHeadStyles from "./DropdownHead.styles";
+
+interface IDropdownHeadProps extends WithStyles<typeof dropdownHeadStyles>{
     label?: string;
     placeholder?: string;
     selectedItem?: IDropdownOptionsElement | null,
