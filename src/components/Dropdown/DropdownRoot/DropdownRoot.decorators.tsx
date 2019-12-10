@@ -8,4 +8,5 @@ const withControlledSwitcherDecorated = withControlledSwitcher(DropdownRoot);
 // TODO: define class definition in JSS package
 // @ts-ignore
 const styledComponent = withStyles(dropdownRootStyles)(DropdownRoot);
+
 export default withControlledSwitcherDecorated;
