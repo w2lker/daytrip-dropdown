@@ -33,7 +33,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
 
       const ifSelectPerform = key === 'Enter';
       const ifSelectPrev = key === 'Keyup' || ( key === 'Tab' && event.shiftKey );
-      const ifSelectNext = key === 'Keydown' || ( key == 'Tab' && !event.shiftKey );
+      const ifSelectNext = key === 'Keydown' || ( key === 'Tab' && !event.shiftKey );
 
       if (ifSelectPrev || ifSelectNext) {
         // Disallow browser to change focus on Tab
@@ -56,7 +56,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 value={value}
                 onChange={handleFilterChange}
                 onKeyPress={handleFilterKeyPress}
-                onBlur={onClose}
+                onBlur={/*onClose*/ undefined}
             />
         </div>
     )
