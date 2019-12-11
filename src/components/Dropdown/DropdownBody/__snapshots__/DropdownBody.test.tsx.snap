@@ -22,7 +22,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-5 DropdownBodyElement-selected-0-2-6\\" onMouseDown={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-5 DropdownBodyElement-selected-0-2-6\\" onMouseDown={[Function: handleMouseDown]}>
               content1
             </div>
           </DropdownBodyElement>
@@ -31,7 +31,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-5\\" onMouseDown={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-5\\" onMouseDown={[Function: handleMouseDown]}>
               content2
             </div>
           </DropdownBodyElement>

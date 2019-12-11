@@ -26,10 +26,16 @@ const DropdownBodyElement: React.FC<IDropdownBodyElementProps> = (props) => {
     [classes.focused]: focused,
     [classes.selected]: selected,
   });
+  const handleMouseDown = (event: React.MouseEvent): void => {
+    if (!event.button) {
+      return onClick();
+    }
+  };
+
   return (
     <div
       className={wrapperClass}
-      onMouseDown={onClick}
+      onMouseDown={handleMouseDown}
     >
       {content}
     </div>

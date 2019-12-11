@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 
 import {WithStyles} from "react-jss";
 import classNames from "classnames";
@@ -33,11 +33,16 @@ const DropdownHead: React.FC<IDropdownHeadProps> = (props) => {
     [classes.caret]: true,
     [classes.caretReverted]: opened,
   });
+  const handleMouseDown = (event: React.MouseEvent): void => {
+    if (!event.button) {
+      return onClick();
+    }
+  };
 
   return (
     <div
       className={classes.wrapper}
-      onClick={onClick}
+      onMouseDown={handleMouseDown}
     >
       <div className={classes.label}>{labelTest}</div>
       <div className={classes.content}>{contentText}</div>

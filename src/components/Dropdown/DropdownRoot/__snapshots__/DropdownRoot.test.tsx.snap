@@ -6,7 +6,7 @@ exports[`DropdownRoot component match snapshot 1`] = `
     <JssContextSubscriber opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}}>
       <WithStyles(DropdownHead) innerRef={{...}} opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}} jssContext={{...}} theme={{...}}>
         <DropdownHead opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}} classes={{...}}>
-          <div className=\\"DropdownHead-wrapper-0-2-1\\" onClick={[Function: onClick]}>
+          <div className=\\"DropdownHead-wrapper-0-2-1\\" onMouseDown={[Function: handleMouseDown]}>
             <div className=\\"DropdownHead-label-0-2-2\\">
               some-label
             </div>
