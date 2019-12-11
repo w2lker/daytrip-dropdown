@@ -10,6 +10,7 @@ import lang from "../../../const/lang";
 
 import { IDropdownOptionsElement } from "../DropdownRoot/DropdownRoot";
 import {getValue} from "../../../utils/dropdown";
+import {chevron} from "./DropdownHead.svg";
 
 export interface IDropdownHeadProps extends WithStyles<typeof dropdownHeadStyles>{
   opened: boolean;
@@ -39,7 +40,9 @@ const DropdownHead: React.FC<IDropdownHeadProps> = (props) => {
     >
       <div className={classes.label}>{labelTest}</div>
       <div className={classes.content}>{contentText}</div>
-      <div className={caretClassname} />
+      <div className={caretClassname}>
+        {chevron()}
+      </div>
     </div>
   )
 };

@@ -12,7 +12,7 @@ const dropdownHeadStyles = {
     padding: 0
   },
   caretReverted: {
-    padding: 0
+    transform: 'rotate(-180deg)'
   }
 };
 
