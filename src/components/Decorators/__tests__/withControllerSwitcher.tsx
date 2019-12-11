@@ -8,7 +8,7 @@ const setup = () => {
   };
   const sampleProps = {
     customProp: 'customProp-passes',
-    value: 'someValue',
+    select: 'someValue',
     onSelect: jest.fn()
   };
   return {SampleComponent, sampleProps};
