@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import Dropdown from "../Dropdown";
 import countries from "../../const/countries";
 
