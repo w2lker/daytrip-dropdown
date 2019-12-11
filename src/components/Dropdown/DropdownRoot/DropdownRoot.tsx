@@ -14,7 +14,7 @@ export interface IDropdownOptionsElement {
 
 export type IDropdownOptionsArray = IDropdownOptionsElement[];
 
-interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
+export interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
     options: IDropdownOptionsArray;
     selected?: string;
     rows?: number;

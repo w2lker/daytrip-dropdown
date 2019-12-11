@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownRoot component match snapshot 1`] = `
+"<DropdownRoot options={{...}} onSelect={[Function: mockConstructor]} classes={{...}} label=\\"some-label\\" placeholder=\\"some-placeholder\\" rows={5}>
+  <div className=\\"dropdownRoot-root\\">
+    <JssContextSubscriber opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}}>
+      <WithStyles(DropdownHead) innerRef={{...}} opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}} jssContext={{...}} theme={{...}}>
+        <DropdownHead opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}} classes={{...}}>
+          <div className=\\"DropdownHead-wrapper-0-2-1\\" onClick={[Function: onClick]}>
+            <div className=\\"DropdownHead-label-0-2-2\\">
+              some-label
+            </div>
+            <div className=\\"DropdownHead-content-0-2-3\\">
+              some-placeholder
+            </div>
+            <div className=\\"DropdownHead-caret-0-2-4\\" />
+          </div>
+        </DropdownHead>
+      </WithStyles(DropdownHead)>
+    </JssContextSubscriber>
+    <JssContextSubscriber opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]}>
+      <WithStyles(DropdownBody) innerRef={{...}} opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} jssContext={{...}} theme={{...}}>
+        <DropdownBody opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} classes={{...}} />
+      </WithStyles(DropdownBody)>
+    </JssContextSubscriber>
+  </div>
+</DropdownRoot>"
+`;
