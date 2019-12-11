@@ -1,8 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import {WithStyles} from "react-jss";
 
 import dropdownBodyFilterStyles from "./DropdownBodyFilter.styles";
+import DropdownLang from "../../DropdownRoot/DropdownRoot.lang";
+
 import {magnify} from "./DropdownBodyFilter.svg";
+import lang from "../../../../const/lang";
 
 export interface IDropdownBodyFilterProps extends WithStyles<typeof dropdownBodyFilterStyles>{
     value: string;
@@ -22,6 +25,10 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
     const { value, onFilterChange, onSelectNext, onSelectPerform, onSelectPrev, onClose} = props;
     const classes = props.classes || emptyClasses;
     const inputRef = useRef<HTMLInputElement>(null);
+    // Fallback if there is no context provided
+    const contextLang = useContext(DropdownLang) as typeof lang.dropdown;
+    const defaultTexts = contextLang && contextLang.filter ? contextLang.filter : { placeholder: '' };
+
     useEffect(() => {
         inputRef && inputRef.current && inputRef.current.focus && inputRef.current.focus();
     });
@@ -62,6 +69,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 className={classes.input}
                 ref={inputRef}
                 value={value}
+                placeholder={defaultTexts.placeholder}
                 onChange={handleFilterChange}
                 onKeyDown={handleFilterKeyDown}
                 onBlur={onClose}

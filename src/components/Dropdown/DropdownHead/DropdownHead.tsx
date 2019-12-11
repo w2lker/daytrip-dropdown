@@ -22,8 +22,9 @@ export interface IDropdownHeadProps extends WithStyles<typeof dropdownHeadStyles
 
 const DropdownHead: React.FC<IDropdownHeadProps> = (props) => {
   const { opened, label, placeholder, selectedItem, onClick, classes } = props;
-  const { head: defaultTexts } = useContext(DropdownLang) as typeof lang.dropdown;
-
+  // Fallback if there is no context provided
+  const contextLang = useContext(DropdownLang) as typeof lang.dropdown;
+  const defaultTexts = contextLang && contextLang.head ? contextLang.head : { label: '', placeholder: '' };
 
   const labelTest = label || defaultTexts.label;
   const contentPlaceholder = placeholder || defaultTexts.placeholder;
