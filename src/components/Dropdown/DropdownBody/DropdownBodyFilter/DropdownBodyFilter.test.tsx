@@ -10,7 +10,9 @@ import dropdownBodyFilterStyles from './DropdownBodyFilter.styles';
 const setup = () => {
   const classes = {
     wrapper: 'dropdownBodyFilter-wrapper',
+    magnify: 'dropdownBodyFilter-magnify',
     input: 'dropdownBodyFilter-input',
+    divider: 'dropdownBodyFilter-divider',
   };
 
   const classesKeys = Object.keys(classes);

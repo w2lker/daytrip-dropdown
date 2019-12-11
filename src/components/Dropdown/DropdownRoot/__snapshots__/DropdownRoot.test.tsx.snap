@@ -13,7 +13,11 @@ exports[`DropdownRoot component match snapshot 1`] = `
             <div className=\\"DropdownHead-content-0-2-3\\">
               some-placeholder
             </div>
-            <div className=\\"DropdownHead-caret-0-2-4\\" />
+            <div className=\\"DropdownHead-caret-0-2-4\\">
+              <svg width=\\"12px\\" height=\\"8px\\" viewBox=\\"0 0 12 8\\">
+                <polygon fill=\\"#617E8D\\" points=\\"1.41 0 6 4.59 10.59 0 12 1.42 6 7.42 0 1.42\\" />
+              </svg>
+            </div>
           </div>
         </DropdownHead>
       </WithStyles(DropdownHead)>

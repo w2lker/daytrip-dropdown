@@ -7,7 +7,13 @@ exports[`DropdownBody component match snapshot 1`] = `
       <WithStyles(DropdownBodyFilter) innerRef={{...}} value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} jssContext={{...}} theme={{...}}>
         <DropdownBodyFilter value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} classes={{...}}>
           <div className=\\"DropdownBodyFilter-wrapper-0-2-1\\">
-            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyDown={[Function: handleFilterKeyDown]} onBlur={[Function: mockConstructor]} />
+            <div className=\\"DropdownBodyFilter-magnify-0-2-2\\">
+              <svg width=\\"14px\\" height=\\"14px\\" viewBox=\\"0 0 14 14\\">
+                <path d=\\"M5.2,0 C8.072,0 10.4,2.328 10.4,5.2 C10.4,6.488 9.928,7.672 9.152,8.584 L9.368,8.8 L10,8.8 L14,12.8 L12.8,14 L8.8,10 L8.8,9.368 L8.584,9.152 C7.672,9.928 6.488,10.4 5.2,10.4 C2.328,10.4 0,8.072 0,5.2 C0,2.328 2.328,0 5.2,0 Z M5.2,1.6 C3.2,1.6 1.6,3.2 1.6,5.2 C1.6,7.2 3.2,8.8 5.2,8.8 C7.2,8.8 8.8,7.2 8.8,5.2 C8.8,3.2 7.2,1.6 5.2,1.6 Z\\" fill=\\"#299BF6\\" />
+              </svg>
+            </div>
+            <input className=\\"DropdownBodyFilter-input-0-2-3\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyDown={[Function: handleFilterKeyDown]} onBlur={[Function: mockConstructor]} />
+            <div className=\\"DropdownBodyFilter-divider-0-2-4\\" />
           </div>
         </DropdownBodyFilter>
       </WithStyles(DropdownBodyFilter)>
@@ -16,7 +22,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-3 DropdownBodyElement-selected-0-2-4\\" onMouseDown={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-5 DropdownBodyElement-selected-0-2-6\\" onMouseDown={[Function: handleSelect]}>
               content1
             </div>
           </DropdownBodyElement>
@@ -25,7 +31,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-3\\" onMouseDown={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-5\\" onMouseDown={[Function: handleSelect]}>
               content2
             </div>
           </DropdownBodyElement>

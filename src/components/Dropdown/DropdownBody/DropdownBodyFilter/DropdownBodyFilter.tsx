@@ -1,6 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import {WithStyles} from "react-jss";
+
 import dropdownBodyFilterStyles from "./DropdownBodyFilter.styles";
+import {magnify} from "./DropdownBodyFilter.svg";
 
 export interface IDropdownBodyFilterProps extends WithStyles<typeof dropdownBodyFilterStyles>{
     value: string;
@@ -53,7 +55,9 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
 
     return (
         <div className={classes.wrapper}>
-            {/*  TODO: add search icon here  */}
+            <div className={classes.magnify}>
+              {magnify()}
+            </div>
             <input
                 className={classes.input}
                 ref={inputRef}
@@ -62,6 +66,7 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 onKeyDown={handleFilterKeyDown}
                 onBlur={onClose}
             />
+            <div className={classes.divider} />
         </div>
     )
 };
