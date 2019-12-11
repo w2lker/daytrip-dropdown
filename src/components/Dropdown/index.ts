@@ -1,2 +1,2 @@
-import DropdownRoot from "./DropdownRoot";
-export default DropdownRoot;
+import Dropdown from "./DropdownRoot";
+export default Dropdown;

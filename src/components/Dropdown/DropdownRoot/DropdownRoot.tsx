@@ -23,9 +23,11 @@ interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
     onSelect?: (selected: string) => void;
 }
 
+let modifiedOptions: IDropdownOptionsArray = [];
+
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const { options, rows, label, placeholder, selected, classes, onSelect } = props;
-    let modifiedOptions: IDropdownOptionsArray;
+
     // Filter options array to display only unique key value to prevent issue with onSelect callback validation
     useEffect(() => {
         const withoutDuplicates = modifyDropdownOptionsDuplicates(options);
@@ -34,9 +36,9 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
 
     const [isOpened, setIsOpened] = useState(false);
 
-    const selectedOption = selected && options && options.length ?
-        options.find( (opt) => getKey(opt) === selected)
-    : null;
+    const selectedOption = selected && modifiedOptions && modifiedOptions.length ?
+        modifiedOptions.find( (opt) => getKey(opt) === selected)
+      : null;
 
     return (
         <div className={classes.root}>
@@ -47,15 +49,14 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
                 onClick={() => setIsOpened(!isOpened)}
                 selectedItem={selectedOption}
             />
-            {isOpened && (
-                <DropdownBody
-                  selected={selected}
-                  options={options}
-                  rows={rows}
-                  onSelect={onSelect}
-                  onClose={() => setIsOpened(false)}
-                />
-            )}
+            <DropdownBody
+              opened={isOpened}
+              selected={selected}
+              options={modifiedOptions}
+              rows={rows}
+              onSelect={onSelect}
+              onClose={() => setIsOpened(false)}
+            />
         </div>
     );
 };
