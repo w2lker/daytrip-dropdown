@@ -1,6 +1,6 @@
 import React, {createContext, ReactElement} from "react";
 import withLangContext from "../withLangContext";
-import {shallow} from "enzyme";
+import {mount, shallow} from "enzyme";
 
 const setup = () => {
   const SampleComponent = ():ReactElement => {
@@ -17,6 +17,14 @@ const setup = () => {
 
   return {SampleComponent, SampleContext ,sampleProps, sampleLang};
 };
+
+it('match snapshot', () => {
+  const {SampleComponent, SampleContext, sampleLang, sampleProps} = setup();
+  const DecoratedComponent = withLangContext(SampleComponent, SampleContext, sampleLang);
+  // @ts-ignore
+  const component = mount(<DecoratedComponent {...sampleProps}/>);
+  expect(component.debug()).toMatchSnapshot();
+});
 
 it('pass original props if they are provided', () => {
   const {SampleComponent, SampleContext, sampleLang, sampleProps} = setup();

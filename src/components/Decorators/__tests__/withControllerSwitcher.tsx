@@ -1,5 +1,5 @@
-import React, {ReactElement} from "react";
-import { shallow } from "enzyme";
+import React, { ReactElement } from "react";
+import {mount, shallow} from "enzyme";
 import withControlledSwitcher from "../withControlledSwitcher";
 
 const setup = () => {
@@ -13,6 +13,13 @@ const setup = () => {
   };
   return {SampleComponent, sampleProps};
 };
+
+it('match snapshot', () => {
+  const {SampleComponent, sampleProps} = setup();
+  const DecoratedComponent = withControlledSwitcher(SampleComponent);
+  const component = mount(<DecoratedComponent {...sampleProps}/>);
+  expect(component.debug()).toMatchSnapshot();
+});
 
 it('pass original props if they are provided', () => {
   const {SampleComponent, sampleProps} = setup();

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+"<WithLangContext(undefined, undefined) customProp=\\"customProp-passes\\">
+  <SampleComponent customProp=\\"customProp-passes\\" />
+</WithLangContext(undefined, undefined)>"
+`;
