@@ -1,12 +1,17 @@
 import React from "react";
-import DropdownRoot from "./DropdownRoot";
-import withControlledSwitcher from "../../Decorators/withControlledSwitcher";
+
 import withStyles from "react-jss";
+
+import DropdownRoot from "./DropdownRoot";
+import DropdownLang from "./DropdownRoot.lang";
+
+import withControlledSwitcher from "../../Decorators/withControlledSwitcher";
+import withLangContext from "../../Decorators/withLangContext";
 import dropdownRootStyles from "./DropdownRoot.styles";
+import lang from "../../../const/lang";
 
 const withControlledSwitcherDecorated = withControlledSwitcher(DropdownRoot);
-// TODO: define class definition in JSS package
-// @ts-ignore
-const styledComponent = withStyles(dropdownRootStyles)(DropdownRoot);
+const withLangContextDecorated = withLangContext(withControlledSwitcherDecorated, DropdownLang, lang.dropdown);
+const styledComponent = withStyles(dropdownRootStyles)(withLangContextDecorated);
 
-export default withControlledSwitcherDecorated;
+export default styledComponent;

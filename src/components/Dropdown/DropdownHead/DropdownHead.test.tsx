@@ -3,10 +3,13 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import DropdownHead, { IDropdownHeadProps } from './DropdownHead';
+import DropdownLang from "../DropdownRoot/DropdownRoot.lang";
 import DropdownHeadDecorated from './DropdownHead.decorators';
+import withLangContext from "../../Decorators/withLangContext";
+
 import dropdownHeadStyles from './DropdownHead.styles';
+import { IDropdownOptionsElement } from "../DropdownRoot/DropdownRoot";
 import {getValue} from "../../../utils/dropdown";
-import {DropdownLang, IDropdownOptionsElement} from "../DropdownRoot/DropdownRoot";
 
 const setup = () => {
   const classes = {
@@ -73,12 +76,8 @@ describe('DropdownHead component', () => {
       label: undefined,
       placeholder: undefined,
     };
-    const component = mount(
-      <DropdownLang.Provider value={defaultText}>
-        <DropdownHead {...props} />
-      </DropdownLang.Provider>
-    );
-
+    const DecoratedComponent = withLangContext(DropdownHead, DropdownLang, defaultText);
+    const component = mount(<DecoratedComponent { ...props }/>);
     expect(component.find(`.${classes.label}`).text()).toBe(defaultText.head.label);
     expect(component.find(`.${classes.content}`).text()).toBe(defaultText.head.placeholder);
   });
@@ -107,7 +106,7 @@ describe('DropdownHead decorators', () => {
     const { sampleProps, classesKeys } = setup();
     const component = mount(<DropdownHeadDecorated {...sampleProps} />);
     // @ts-ignore
-    const assignedClasses = component.find('NoRenderer').props().classes;
+    const assignedClasses = component.find('DropdownHead').props().classes;
     classesKeys.forEach(keyValue => {
       expect(assignedClasses[keyValue]).toBeDefined();
     });

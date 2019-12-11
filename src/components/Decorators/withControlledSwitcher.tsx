@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 export interface IWithControlledSwitcher {
-    value?: string;
-    onSelect?: (val: string) => void;
+    value: string;
+    onSelect: (val: string) => void;
 }
 
-export default function <T>(Child: React.ComponentType<T>):React.FC<T & IWithControlledSwitcher> {
+function withControlledSwitcher<Props>(Child: React.ComponentType<Props>):React.FC<Props & IWithControlledSwitcher> {
     return (props) => {
         const {value, onSelect, ...other} = props as IWithControlledSwitcher;
         if (value && onSelect) {
@@ -21,4 +21,4 @@ export default function <T>(Child: React.ComponentType<T>):React.FC<T & IWithCon
     };
 }
 
-
+export default withControlledSwitcher;

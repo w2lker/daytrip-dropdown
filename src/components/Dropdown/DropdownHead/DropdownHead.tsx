@@ -1,12 +1,15 @@
 import React, {useContext} from "react";
 
 import {WithStyles} from "react-jss";
+import classNames from "classnames";
 
-import {DropdownLang, IDropdownOptionsElement} from "../DropdownRoot/DropdownRoot";
+import DropdownLang from "../DropdownRoot/DropdownRoot.lang";
+
 import dropdownHeadStyles from "./DropdownHead.styles";
 import lang from "../../../const/lang";
+
+import { IDropdownOptionsElement } from "../DropdownRoot/DropdownRoot";
 import {getValue} from "../../../utils/dropdown";
-import classNames from "classnames";
 
 export interface IDropdownHeadProps extends WithStyles<typeof dropdownHeadStyles>{
   opened: boolean;

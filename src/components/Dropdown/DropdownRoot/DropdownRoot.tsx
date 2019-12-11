@@ -1,11 +1,12 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import DropdownHead from "../DropdownHead";
 import DropdownBody from "../DropdownBody";
 
 import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.helpers';
 import {getKey} from "../../../utils/dropdown";
-import lang from "../../../const/lang";
+import {WithStyles} from "react-jss";
+import dropdownRootStyles from "./DropdownRoot.styles";
 
 export interface IDropdownOptionsElement {
     [value: string]: string;
@@ -13,18 +14,14 @@ export interface IDropdownOptionsElement {
 
 export type IDropdownOptionsArray = IDropdownOptionsElement[];
 
-interface IDropdownProps {
+interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
     options: IDropdownOptionsArray;
     selected?: string;
     rows?: number;
     label?: string;
     placeholder?: string;
     onSelect?: (selected: string) => void;
-    // TODO: define class definition in JSS package
-    classes?: any;
 }
-
-export const DropdownLang = createContext({});
 
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const { options, rows, label, placeholder, selected, classes, onSelect } = props;
@@ -42,7 +39,6 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     : null;
 
     return (
-      <DropdownLang.Provider value={lang.dropdown}>
         <div className={classes.root}>
             <DropdownHead
                 opened={isOpened}
@@ -61,7 +57,6 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
                 />
             )}
         </div>
-      </DropdownLang.Provider>
     );
 };
 
