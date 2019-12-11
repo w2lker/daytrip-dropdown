@@ -29,7 +29,7 @@ const DropdownBodyElement: React.FC<IDropdownBodyElementProps> = (props) => {
   return (
     <div
       className={wrapperClass}
-      onClick={onClick}
+      onMouseDown={onClick}
     >
       {content}
     </div>

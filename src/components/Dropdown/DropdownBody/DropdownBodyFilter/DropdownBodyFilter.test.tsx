@@ -62,34 +62,32 @@ describe('DropdownBodyFilter component', () => {
       });
       const component = shallow(<DropdownBodyFilter {...sampleProps} />);
       const input = component.find(`.${classes.input}`);
-      input.simulate('keyPress', keyPressParams('Enter'));
+      input.simulate('keyDown', keyPressParams('Enter'));
       expect(sampleProps.onSelectPerform).toBeCalledTimes(1);
-      input.simulate('keyPress', keyPressParams('Keyup'));
+      input.simulate('keyDown', keyPressParams('ArrowUp'));
       expect(sampleProps.onSelectPrev).toBeCalledTimes(1);
-      input.simulate('keyPress', keyPressParams('Keydown'));
+      input.simulate('keyDown', keyPressParams('ArrowDown'));
       expect(sampleProps.onSelectNext).toBeCalledTimes(1);
-      input.simulate('keyPress', keyPressParams('Tab', true));
+      input.simulate('keyDown', keyPressParams('Tab', true));
       expect(sampleProps.onSelectPrev).toBeCalledTimes(2);
-      input.simulate('keyPress', keyPressParams('Tab'));
+      input.simulate('keyDown', keyPressParams('Tab'));
       expect(sampleProps.onSelectNext).toBeCalledTimes(2);
       expect(preventFunction).toBeCalledTimes(4);
   });
 
-  test.todo('switch back test after debugging');
   it('handle close on input blur', () => {
     const { classes, sampleProps } = setup();
     const component = shallow(<DropdownBodyFilter {...sampleProps} />);
     const input = component.find(`.${classes.input}`);
     input.simulate('blur');
-    // TODO: switch back test after debugging
-    /* expect(sampleProps.onClose).toBeCalledTimes(1); */
+    expect(sampleProps.onClose).toBeCalledTimes(1);
   });
 
   it('handle close on Esc keypress', () => {
     const { classes, sampleProps } = setup();
     const component = shallow(<DropdownBodyFilter {...sampleProps} />);
     const input = component.find(`.${classes.input}`);
-    input.simulate('keyPress', {key: 'Escape'});
+    input.simulate('keyDown', {key: 'Escape'});
     expect(sampleProps.onClose).toBeCalledTimes(1);
   })
 });

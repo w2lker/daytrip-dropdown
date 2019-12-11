@@ -4,7 +4,7 @@ import dropdownBodyFilterStyles from "./DropdownBodyFilter.styles";
 
 export interface IDropdownBodyFilterProps extends WithStyles<typeof dropdownBodyFilterStyles>{
     value: string;
-    onClose?: () => void;
+    onClose: () => void;
     onFilterChange: (val: string) => void;
     onSelectPerform: () => void;
     onSelectPrev: () => void;
@@ -27,25 +27,29 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
     const handleFilterChange = (event: React.FormEvent<HTMLInputElement>) =>
       onFilterChange((event.target as HTMLInputElement).value);
 
-    const handleFilterKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleFilterKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       const { key } = event;
+
       if (key === 'Escape') return onClose && onClose();
 
       const ifSelectPerform = key === 'Enter';
-      const ifSelectPrev = key === 'Keyup' || ( key === 'Tab' && event.shiftKey );
-      const ifSelectNext = key === 'Keydown' || ( key === 'Tab' && !event.shiftKey );
+      const ifSelectPrev = key === 'ArrowUp' || ( key === 'Tab' && event.shiftKey );
+      const ifSelectNext = key === 'ArrowDown' || ( key === 'Tab' && !event.shiftKey );
 
       if (ifSelectPrev || ifSelectNext) {
         // Disallow browser to change focus on Tab
         event.preventDefault();
       }
 
-      if (ifSelectPerform) return onSelectPerform();
+      if (ifSelectPerform) {
+        onSelectPerform();
+        return onClose();
+      }
+
       if (ifSelectPrev) return onSelectPrev();
       if (ifSelectNext) return onSelectNext();
 
     };
-    // TODO: handle focus over close
 
     return (
         <div className={classes.wrapper}>
@@ -55,8 +59,8 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 ref={inputRef}
                 value={value}
                 onChange={handleFilterChange}
-                onKeyPress={handleFilterKeyPress}
-                onBlur={/*onClose*/ undefined}
+                onKeyDown={handleFilterKeyDown}
+                onBlur={onClose}
             />
         </div>
     )

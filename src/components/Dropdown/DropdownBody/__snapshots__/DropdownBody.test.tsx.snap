@@ -7,7 +7,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <WithStyles(DropdownBodyFilter) innerRef={{...}} value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} jssContext={{...}} theme={{...}}>
         <DropdownBodyFilter value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} classes={{...}}>
           <div className=\\"DropdownBodyFilter-wrapper-0-2-1\\">
-            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} onBlur={[undefined]} />
+            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyDown={[Function: handleFilterKeyDown]} onBlur={[Function: mockConstructor]} />
           </div>
         </DropdownBodyFilter>
       </WithStyles(DropdownBodyFilter)>
@@ -16,7 +16,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-3 DropdownBodyElement-selected-0-2-4\\" onClick={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-3 DropdownBodyElement-selected-0-2-4\\" onMouseDown={[Function: handleSelect]}>
               content1
             </div>
           </DropdownBodyElement>
@@ -25,7 +25,7 @@ exports[`DropdownBody component match snapshot 1`] = `
       <JssContextSubscriber content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content2\\" selected={false} focused={false} onClick={[Function: handleSelect]} classes={{...}}>
-            <div className=\\"DropdownBodyElement-root-0-2-3\\" onClick={[Function: handleSelect]}>
+            <div className=\\"DropdownBodyElement-root-0-2-3\\" onMouseDown={[Function: handleSelect]}>
               content2
             </div>
           </DropdownBodyElement>

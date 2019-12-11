@@ -64,7 +64,7 @@ describe('DropdownBody component', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
     const filterInput = component.find(componentContent.filterInput);
-    filterInput.simulate('keyPress', {
+    filterInput.simulate('keyDown', {
       key: 'Tab',
       keyCode: 9,
     });
@@ -74,7 +74,7 @@ describe('DropdownBody component', () => {
   it('select element', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
-    component.find(`${componentContent.element} div`).first().simulate('click');
+    component.find(`${componentContent.element} div`).first().simulate('mouseDown');
     // @ts-ignore
     const selectedKey = sampleProps.onSelect.mock.calls[0][0];
     expect(selectedKey).toBe(getKey(sampleProps.options[0]));
@@ -83,7 +83,7 @@ describe('DropdownBody component', () => {
   it('perform onClose on element selection', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
-    component.find(`${componentContent.element} div`).first().simulate('click');
+    component.find(`${componentContent.element} div`).first().simulate('mouseDown');
     expect(sampleProps.onClose).toBeCalledTimes(1);
   });
 
@@ -93,8 +93,7 @@ describe('DropdownBody component', () => {
     const component = mount(<DropdownBody {...sampleProps} />);
     const filterInput = component.find(componentContent.filterInput);
     filterInput.simulate('blur' );
-    // TODO: switch back test after debugging
-    //expect(sampleProps.onClose).toBeCalledTimes(1);
+    expect(sampleProps.onClose).toBeCalledTimes(1);
   })
 
 });
