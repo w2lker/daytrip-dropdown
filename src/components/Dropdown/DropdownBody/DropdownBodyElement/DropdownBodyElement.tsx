@@ -1,4 +1,4 @@
-import React, {ComponentType} from 'react';
+import React from 'react';
 
 import classNames from "classnames";
 import {WithStyles} from "react-jss";
