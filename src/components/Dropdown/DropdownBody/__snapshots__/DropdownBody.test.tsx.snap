@@ -37,6 +37,11 @@ exports[`DropdownBody component match snapshot 1`] = `
           </DropdownBodyElement>
         </WithStyles(DropdownBodyElement)>
       </JssContextSubscriber>
+      <JssContextSubscriber isEmpty={false} isFilteredEmpty={false}>
+        <WithStyles(DropdownBodyEmpty) innerRef={{...}} isEmpty={false} isFilteredEmpty={false} jssContext={{...}} theme={{...}}>
+          <DropdownBodyEmpty isEmpty={false} isFilteredEmpty={false} classes={{...}} />
+        </WithStyles(DropdownBodyEmpty)>
+      </JssContextSubscriber>
     </div>
   </div>
 </DropdownBody>"

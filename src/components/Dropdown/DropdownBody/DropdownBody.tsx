@@ -5,6 +5,7 @@ import dropdownBodyStyles from "./DropdownBody.styles";
 import DropdownBodyElement from "./DropdownBodyElement";
 import DropdownBodyFilter from "./DropdownBodyFilter";
 import {getEntries, getKey, getValue} from "../../../utils/dropdown";
+import DropdownBodyEmpty from "./DropdownBodyEmpty";
 
 export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles> {
     opened: boolean;
@@ -88,7 +89,10 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
           />
           <div className={classes.contentWrapper}>
             {renderElements}
-            {/* TODO: add empty screens  */}
+            <DropdownBodyEmpty
+              isEmpty={!(options && options.length)}
+              isFilteredEmpty={!(filtered && filtered.length)}
+            />
           </div>
         </div>
     )
