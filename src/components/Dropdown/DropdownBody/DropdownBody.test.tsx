@@ -15,6 +15,7 @@ const setup = () => {
 
   const classesKeys = Object.keys(classes);
   const sampleProps: IDropdownBodyProps = {
+    opened: true,
     selected: 'val1',
     options: [{'val1': 'content1'}, {'val2': 'content2'}],
     onSelect: jest.fn(),

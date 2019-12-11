@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropdownBody component match snapshot 1`] = `
-"<DropdownBody selected=\\"val1\\" options={{...}} onSelect={[Function: mockConstructor]} onClose={[Function: mockConstructor]} classes={{...}}>
+"<DropdownBody opened={true} selected=\\"val1\\" options={{...}} onSelect={[Function: mockConstructor]} onClose={[Function: mockConstructor]} classes={{...}}>
   <div className=\\"dropdownBodyFilter-wrapper\\">
     <JssContextSubscriber value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]}>
       <WithStyles(DropdownBodyFilter) innerRef={{...}} value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} jssContext={{...}} theme={{...}}>
         <DropdownBodyFilter value=\\"\\" onClose={[Function: mockConstructor]} onFilterChange={[Function: bound dispatchAction]} onSelectPerform={[Function: onSelectPerform]} onSelectNext={[Function]} onSelectPrev={[Function]} classes={{...}}>
           <div className=\\"DropdownBodyFilter-wrapper-0-2-1\\">
-            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} onBlur={[Function: mockConstructor]} />
+            <input className=\\"DropdownBodyFilter-input-0-2-2\\" value=\\"\\" onChange={[Function: handleFilterChange]} onKeyPress={[Function: handleFilterKeyPress]} onBlur={[undefined]} />
           </div>
         </DropdownBodyFilter>
       </WithStyles(DropdownBodyFilter)>

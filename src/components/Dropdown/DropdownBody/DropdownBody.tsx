@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {IDropdownOptionsArray, IDropdownOptionsElement} from "../DropdownRoot/DropdownRoot";
+import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
 import {WithStyles} from "react-jss";
 import dropdownBodyStyles from "./DropdownBody.styles";
 import DropdownBodyElement from "./DropdownBodyElement";
@@ -7,6 +7,7 @@ import DropdownBodyFilter from "./DropdownBodyFilter";
 import {getEntries, getKey, getValue} from "../../../utils/dropdown";
 
 export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles> {
+    opened: boolean;
     selected?: string;
     options: IDropdownOptionsArray;
     // TODO: add rows handling
@@ -24,14 +25,18 @@ const filterOptions = (filter: string, options: IDropdownOptionsArray): IDropdow
     options.filter( (opt) => getValue(opt).includes(filter));
 
 const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
-    const { selected, options, onSelect, onClose } = props;
+    const { opened, selected, options, onSelect, onClose } = props;
+    const [filter, setFilter] = useState('');
+    const [focused, setFocused] = useState('');
+
+    if (!opened) {
+      return null;
+    }
+
     const classes = props.classes || emptyClasses;
     if (!options) {
       return null;
     }
-
-    const [filter, setFilter] = useState('');
-    const [focused, setFocused] = useState('');
 
     const filtered = filterOptions(filter, options);
 
