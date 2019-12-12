@@ -1,6 +1,9 @@
 const dropdownBodyElementStyles = {
   root: {
-    padding: 0,
+    fontWeight: 400,
+    fontSize: 14,
+    color: '#546F7B',
+    paddingBottom: 13,
   },
   selected: {
     padding: 0,
