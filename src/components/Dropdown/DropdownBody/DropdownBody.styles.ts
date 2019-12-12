@@ -8,8 +8,7 @@ const dropdownBodyStyles = {
     contentWrapper: {
       overflowX: 'hidden',
       overflowY: 'scroll',
-      maxHeight: 'calc(100vh - 300px)',
-      padding: '15px 0 0 0'
+      maxHeight: 'calc(100vh - 300px)'
     },
 };
 

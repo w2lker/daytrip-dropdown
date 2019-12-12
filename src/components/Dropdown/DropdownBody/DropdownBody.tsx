@@ -85,7 +85,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
           />
           <div
             className={classes.contentWrapper}
-            style={{ height: rows * 56 }}
+            style={{ height: rows * 57 }}
           >
             {renderElements}
             <DropdownBodyEmpty
