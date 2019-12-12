@@ -13,6 +13,7 @@ const App: React.FC = () => {
         className='country-dropdown'
         label='Your country'
         placeholder='Select your residence country'
+        caseInsensitiveSearch={true}
         options={countries}
         onSelect={onChange}
         rows={6}

@@ -23,13 +23,14 @@ export interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
     rows?: number;
     label?: string;
     placeholder?: string;
+    caseInsensitiveSearch?: boolean;
     onSelect: (selected: string) => void;
 }
 
 let modifiedOptions: IDropdownOptionsArray = [];
 
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
-    const { className, options, rows, label, placeholder, selected, classes, onSelect } = props;
+    const { className, options, rows, label, placeholder, selected, caseInsensitiveSearch, classes, onSelect } = props;
 
     const [isOpened, setIsOpened] = useState(false);
 
@@ -76,6 +77,7 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
               selected={selected}
               options={modifiedOptions}
               rows={rows}
+              caseInsensitiveSearch={caseInsensitiveSearch}
               onSelect={onSelect}
               onClose={() => setIsOpened(false)}
             />

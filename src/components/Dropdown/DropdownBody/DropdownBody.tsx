@@ -15,15 +15,20 @@ export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles
     selected?: string;
     options: IDropdownOptionsArray;
     rows?: number;
+    caseInsensitiveSearch?: boolean;
     onSelect: (val: string) => void;
     onClose: () => void;
 }
 
-const filterOptions = (filter: string, options: IDropdownOptionsArray): IDropdownOptionsArray =>
-    options.filter( (opt) => getValue(opt).includes(filter));
+const filterOptions = (filter: string, options: IDropdownOptionsArray, caseInsensitive?: boolean): IDropdownOptionsArray => {
+  const insensitive = caseInsensitive ? 'i' : '';
+  const regExpFilter = new RegExp(filter, insensitive);
+  return options.filter( (opt) => getValue(opt).match(regExpFilter));
+};
+
 
 const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
-    const { opened, selected, options, onSelect, onClose, classes } = props;
+    const { opened, selected, options, onSelect, onClose, classes, caseInsensitiveSearch } = props;
     const [filter, setFilter] = useState('');
     const [focused, setFocused] = useState('');
 
@@ -33,7 +38,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
 
     const rows = (props.rows && props.rows > 5) ? props.rows : 5;
 
-    const filtered = filterOptions(filter, options);
+    const filtered = filterOptions(filter, options, caseInsensitiveSearch);
 
     const focusSwitch = (next: boolean) => () => {
       if (!filtered) return;

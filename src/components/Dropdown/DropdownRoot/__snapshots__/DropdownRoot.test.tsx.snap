@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropdownRoot component match snapshot 1`] = `
-"<DropdownRoot options={{...}} onSelect={[Function: mockConstructor]} classes={{...}} label=\\"some-label\\" placeholder=\\"some-placeholder\\" rows={5}>
+"<DropdownRoot options={{...}} onSelect={[Function: mockConstructor]} classes={{...}} label=\\"some-label\\" placeholder=\\"some-placeholder\\" caseInsensitiveSearch={true} rows={5}>
   <div className=\\"dropdownRoot-root\\">
     <JssContextSubscriber opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}}>
       <WithStyles(DropdownHead) innerRef={{...}} opened={false} label=\\"some-label\\" placeholder=\\"some-placeholder\\" onClick={[Function: onClick]} selectedItem={{...}} jssContext={{...}} theme={{...}}>
@@ -22,9 +22,9 @@ exports[`DropdownRoot component match snapshot 1`] = `
         </DropdownHead>
       </WithStyles(DropdownHead)>
     </JssContextSubscriber>
-    <JssContextSubscriber opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]}>
-      <WithStyles(DropdownBody) innerRef={{...}} opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} jssContext={{...}} theme={{...}}>
-        <DropdownBody opened={false} selected={[undefined]} options={{...}} rows={5} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} classes={{...}} />
+    <JssContextSubscriber opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]}>
+      <WithStyles(DropdownBody) innerRef={{...}} opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} jssContext={{...}} theme={{...}}>
+        <DropdownBody opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} classes={{...}} />
       </WithStyles(DropdownBody)>
     </JssContextSubscriber>
   </div>

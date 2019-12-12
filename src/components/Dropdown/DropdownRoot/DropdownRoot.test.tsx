@@ -59,6 +59,7 @@ const setup = () => {
     classes,
     label: 'some-label',
     placeholder: 'some-placeholder',
+    caseInsensitiveSearch: true,
   };
 
   return {sampleProps, classes, classesKeys};
