@@ -33,16 +33,11 @@ const DropdownHead: React.FC<IDropdownHeadProps> = (props) => {
     [classes.caret]: true,
     [classes.caretReverted]: opened,
   });
-  const handleMouseDown = (event: React.MouseEvent): void => {
-    if (!event.button) {
-      return onClick();
-    }
-  };
 
   return (
     <div
       className={classes.wrapper}
-      onMouseDown={handleMouseDown}
+      onClick={onClick}
     >
       <div className={classes.label}>{labelTest}</div>
       <div className={classes.content}>{contentText}</div>

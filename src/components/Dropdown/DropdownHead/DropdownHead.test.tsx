@@ -85,7 +85,7 @@ describe('DropdownHead component', () => {
   it('handles click', () => {
     const { classes, sampleProps } = setup();
     const component = shallow(<DropdownHead {...sampleProps}/>);
-    component.find(`.${classes.wrapper}`).simulate('mouseDown', {button: 0});
+    component.find(`.${classes.wrapper}`).simulate('click');
     expect(sampleProps.onClick).toBeCalledTimes(1);
   });
 });
