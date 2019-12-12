@@ -5,7 +5,8 @@ const dropdownHeadStyles = {
     borderRadius: 4,
     position: 'relative',
     padding: '16px 30px',
-    marginBottom: 10
+    marginBottom: 10,
+    cursor: 'pointer',
   },
   label: {
     paddingBottom: 6,
