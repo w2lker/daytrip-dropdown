@@ -3,7 +3,7 @@ const dropdownBodyEmptyStyles = {
     textAlign: 'center',
   },
   icon: {
-    margin: '15px 0 30px',
+    margin: '30px 0 30px',
     color: '#B2C0C7',
     '& svg': {
       display: 'block',
@@ -21,7 +21,8 @@ const dropdownBodyEmptyStyles = {
     padding: '0 30px',
     fontSize: 14,
     color: '#546F7B',
-    lineHeight: '24px'
+    lineHeight: '24px',
+    margin: 0
   },
 };
 
