@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import classNames from "classnames";
 
@@ -23,7 +23,7 @@ export interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
     rows?: number;
     label?: string;
     placeholder?: string;
-    onSelect?: (selected: string) => void;
+    onSelect: (selected: string) => void;
 }
 
 let modifiedOptions: IDropdownOptionsArray = [];
@@ -31,13 +31,27 @@ let modifiedOptions: IDropdownOptionsArray = [];
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const { className, options, rows, label, placeholder, selected, classes, onSelect } = props;
 
+    const [isOpened, setIsOpened] = useState(false);
+
     // Filter options array to display only unique key value to prevent issue with onSelect callback validation
     useEffect(() => {
         const withoutDuplicates = modifyDropdownOptionsDuplicates(options);
         modifiedOptions = modifyDropdownOptionsMultiline(withoutDuplicates);
     }, [options]);
 
-    const [isOpened, setIsOpened] = useState(false);
+    // Handle close on click outside
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    function handleClickOutside(event: MouseEvent ) {
+      const isClickedOutside = wrapperRef.current && !wrapperRef.current.contains(event.target as HTMLDivElement);
+      if (isOpened && isClickedOutside) setIsOpened(false);
+    }
+
+    useEffect(() => {
+      document.addEventListener("click", handleClickOutside);
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    });
 
     const selectedOption = selected && modifiedOptions && modifiedOptions.length ?
         modifiedOptions.find( (opt) => getKey(opt) === selected)
@@ -46,7 +60,10 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     const wrapperClass = classNames(classes.root, className);
 
     return (
-        <div className={wrapperClass}>
+        <div
+          className={wrapperClass}
+          ref={wrapperRef}
+        >
             <DropdownHead
                 opened={isOpened}
                 label={label}
