@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropdownBodyElement component match snapshot 1`] = `
-"<div className=\\"dropdownBodyElement-wrapper dropdownBodyElement-focused\\" onMouseDown={[Function: handleMouseDown]}>
+"<div className=\\"dropdownBodyElement-wrapper dropdownBodyElement-focused\\" onClick={[Function: mockConstructor]}>
   Some text
 </div>"
 `;
