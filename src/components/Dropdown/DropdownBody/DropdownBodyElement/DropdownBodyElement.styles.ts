@@ -3,14 +3,12 @@ const dropdownBodyElementStyles = {
     fontWeight: 400,
     fontSize: 14,
     color: '#546F7B',
-    paddingBottom: 13,
+    padding:'0 16px 13px 29px',
   },
   selected: {
-    padding: 0,
     color: 'red',
   },
   focused: {
-    padding: 0,
     color: 'blue',
   }
 };
