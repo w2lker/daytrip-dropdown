@@ -72,7 +72,6 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
                 placeholder={defaultTexts.placeholder}
                 onChange={handleFilterChange}
                 onKeyDown={handleFilterKeyDown}
-                onBlur={onClose}
             />
             <div className={classes.divider} />
         </div>

@@ -77,14 +77,6 @@ describe('DropdownBodyFilter component', () => {
       expect(preventFunction).toBeCalledTimes(4);
   });
 
-  it('handle close on input blur', () => {
-    const { classes, sampleProps } = setup();
-    const component = shallow(<DropdownBodyFilter {...sampleProps} />);
-    const input = component.find(`.${classes.input}`);
-    input.simulate('blur');
-    expect(sampleProps.onClose).toBeCalledTimes(1);
-  });
-
   it('handle close on Esc keypress', () => {
     const { classes, sampleProps } = setup();
     const component = shallow(<DropdownBodyFilter {...sampleProps} />);
