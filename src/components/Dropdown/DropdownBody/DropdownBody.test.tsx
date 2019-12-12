@@ -74,7 +74,7 @@ describe('DropdownBody component', () => {
   it('select element', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
-    component.find(`${componentContent.element} div`).first().simulate('mouseDown');
+    component.find(`${componentContent.element} div`).first().simulate('click');
     // @ts-ignore
     const selectedKey = sampleProps.onSelect.mock.calls[0][0];
     expect(selectedKey).toBe(getKey(sampleProps.options[0]));
@@ -83,17 +83,9 @@ describe('DropdownBody component', () => {
   it('perform onClose on element selection', () => {
     const { sampleProps, componentContent } = setup();
     const component = mount(<DropdownBody {...sampleProps} />);
-    component.find(`${componentContent.element} div`).first().simulate('mouseDown');
+    component.find(`${componentContent.element} div`).first().simulate('click');
     expect(sampleProps.onClose).toBeCalledTimes(1);
   });
-
-  it('perform onClose on filter blur',() => {
-    const { sampleProps, componentContent } = setup();
-    const component = mount(<DropdownBody {...sampleProps} />);
-    const filterInput = component.find(componentContent.filterInput);
-    filterInput.simulate('blur' );
-    expect(sampleProps.onClose).toBeCalledTimes(1);
-  })
 
 });
 

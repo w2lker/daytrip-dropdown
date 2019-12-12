@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
 import {WithStyles} from "react-jss";
 import dropdownBodyStyles from "./DropdownBody.styles";
@@ -11,9 +11,8 @@ export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles
     opened: boolean;
     selected?: string;
     options: IDropdownOptionsArray;
-    // TODO: add rows handling
     rows?: number;
-    onSelect?: (val: string) => void;
+    onSelect: (val: string) => void;
     onClose: () => void;
 }
 
@@ -30,10 +29,6 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     }
 
     const rows = (props.rows && props.rows > 5) ? props.rows : 5;
-
-    if (!options) {
-      return null;
-    }
 
     const filtered = filterOptions(filter, options);
 
@@ -58,7 +53,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     const renderElements = filtered.map( (item) => {
       const {key, value: content} = getEntries(item);
       const handleSelect = () => {
-        onSelect && onSelect(key);
+        onSelect(key);
         onClose();
       };
 
@@ -79,7 +74,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
             value={filter}
             onClose={onClose}
             onFilterChange={setFilter}
-            onSelectPerform={ () => focused && onSelect && onSelect(focused) }
+            onSelectPerform={ () => focused && onSelect(focused) }
             onSelectNext={ focusSwitch(true) }
             onSelectPrev={ focusSwitch(false) }
           />
