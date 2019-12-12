@@ -1,7 +1,7 @@
 import { ReactWrapper } from "enzyme";
 
 export function findByDisplayNameRegex(component: ReactWrapper, regExp: RegExp) {
-  let child = component.childAt(0);
+  let child = component;
   while(child.length && !regExp.test(child.name())) {
     child = child.childAt(0);
   }

@@ -119,6 +119,7 @@ describe('Dropdown decorators', () => {
     const { sampleProps } = setup();
     const component = mount(<DropdownRootDecorated {...sampleProps} />);
     const langContextReg = new RegExp('^WithLangContext.*');
+    console.log('-----', component.debug());
     expect(findByDisplayNameRegex(component, langContextReg)).toBeTruthy();
   });
 

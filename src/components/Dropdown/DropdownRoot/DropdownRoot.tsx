@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
+import classNames from "classnames";
+
 import DropdownHead from "../DropdownHead";
 import DropdownBody from "../DropdownBody";
 
@@ -15,6 +17,7 @@ export interface IDropdownOptionsElement {
 export type IDropdownOptionsArray = IDropdownOptionsElement[];
 
 export interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
+    className?: string;
     options: IDropdownOptionsArray;
     selected?: string;
     rows?: number;
@@ -26,7 +29,7 @@ export interface IDropdownProps extends WithStyles<typeof dropdownRootStyles> {
 let modifiedOptions: IDropdownOptionsArray = [];
 
 const DropdownRoot: React.FC<IDropdownProps> = (props) => {
-    const { options, rows, label, placeholder, selected, classes, onSelect } = props;
+    const { className, options, rows, label, placeholder, selected, classes, onSelect } = props;
 
     // Filter options array to display only unique key value to prevent issue with onSelect callback validation
     useEffect(() => {
@@ -40,8 +43,10 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
         modifiedOptions.find( (opt) => getKey(opt) === selected)
       : null;
 
+    const wrapperClass = classNames(classes.root, className);
+
     return (
-        <div className={classes.root}>
+        <div className={wrapperClass}>
             <DropdownHead
                 opened={isOpened}
                 label={label}

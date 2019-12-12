@@ -8,6 +8,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Dropdown
+        className='country-dropdown'
         label='Your country'
         placeholder='Select your residence country'
         options={countries}

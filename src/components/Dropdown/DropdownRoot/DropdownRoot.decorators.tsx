@@ -8,8 +8,8 @@ import withLangContext from "../../Decorators/withLangContext";
 import dropdownRootStyles from "./DropdownRoot.styles";
 import lang from "../../../const/lang";
 
-const withControlledSwitcherDecorated = withControlledSwitcher(DropdownRoot);
+const styledComponent = withStyles(dropdownRootStyles)(DropdownRoot);
+const withControlledSwitcherDecorated = withControlledSwitcher(styledComponent);
 const withLangContextDecorated = withLangContext(withControlledSwitcherDecorated, DropdownLang, lang.dropdown);
-const styledComponent = withStyles(dropdownRootStyles)(withLangContextDecorated);
 
-export default styledComponent;
+export default withLangContextDecorated;
