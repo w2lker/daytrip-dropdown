@@ -1,15 +1,27 @@
 const dropdownBodyEmptyStyles = {
   wrapper: {
-    padding: 0,
+    textAlign: 'center',
   },
   icon: {
-    padding: 0,
+    margin: '15px 0 30px',
+    color: '#B2C0C7',
+    '& svg': {
+      display: 'block',
+      margin: '0 auto'
+    }
   },
   title: {
-    padding: 0,
+    fontWeight: 500,
+    fontSize: 14,
+    color: '#546F7B',
+    paddingBottom: 10,
+    margin: 0
   },
   description: {
-    padding: 0,
+    padding: '0 30px',
+    fontSize: 14,
+    color: '#546F7B',
+    lineHeight: '24px'
   },
 };
 
