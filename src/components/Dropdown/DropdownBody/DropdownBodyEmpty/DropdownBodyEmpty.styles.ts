@@ -1,13 +1,18 @@
 const dropdownBodyEmptyStyles = {
   wrapper: {
+    position: 'absolute',
+    top: '50%',
+    width: '100%',
+    transform: 'translateY(-50%)',
     textAlign: 'center',
   },
   icon: {
-    margin: '30px 0',
+    margin: '0 0 20px',
     color: '#B2C0C7',
     '& svg': {
       display: 'block',
-      margin: '0 auto'
+      margin: '0 auto',
+      width: 60,
     }
   },
   title: {
