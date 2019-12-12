@@ -18,7 +18,7 @@ exports[`DropdownBody component match snapshot 1`] = `
         </DropdownBodyFilter>
       </WithStyles(DropdownBodyFilter)>
     </JssContextSubscriber>
-    <div className=\\"dropdownBodyFilter-input\\">
+    <div className=\\"dropdownBodyFilter-content-wrapper\\" style={{...}}>
       <JssContextSubscriber content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]}>
         <WithStyles(DropdownBodyElement) innerRef={{...}} content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} jssContext={{...}} theme={{...}}>
           <DropdownBodyElement content=\\"content1\\" selected={true} focused={false} onClick={[Function: handleSelect]} classes={{...}}>

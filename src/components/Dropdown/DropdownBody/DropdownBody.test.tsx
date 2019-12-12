@@ -10,7 +10,7 @@ import {getKey, getValue} from "../../../utils/dropdown";
 const setup = () => {
   const classes = {
     wrapper: 'dropdownBodyFilter-wrapper',
-    contentWrapper: 'dropdownBodyFilter-input',
+    contentWrapper: 'dropdownBodyFilter-content-wrapper',
   };
 
   const classesKeys = Object.keys(classes);

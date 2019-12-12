@@ -17,16 +17,11 @@ export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles
     onClose: () => void;
 }
 
-const emptyClasses = {
-  wrapper: '',
-  contentWrapper: '',
-};
-
 const filterOptions = (filter: string, options: IDropdownOptionsArray): IDropdownOptionsArray =>
     options.filter( (opt) => getValue(opt).includes(filter));
 
 const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
-    const { opened, selected, options, onSelect, onClose } = props;
+    const { opened, selected, options, onSelect, onClose, classes } = props;
     const [filter, setFilter] = useState('');
     const [focused, setFocused] = useState('');
 
@@ -34,7 +29,8 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
       return null;
     }
 
-    const classes = props.classes || emptyClasses;
+    const rows = (props.rows && props.rows > 5) ? props.rows : 5;
+
     if (!options) {
       return null;
     }
@@ -87,7 +83,10 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
             onSelectNext={ focusSwitch(true) }
             onSelectPrev={ focusSwitch(false) }
           />
-          <div className={classes.contentWrapper}>
+          <div
+            className={classes.contentWrapper}
+            style={{ height: rows * 56 }}
+          >
             {renderElements}
             <DropdownBodyEmpty
               isEmpty={!(options && options.length)}
