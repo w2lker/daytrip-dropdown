@@ -7,8 +7,8 @@ import dropdownRootStyles from "./DropdownRoot.styles";
 import DropdownRootDecorated from './DropdownRoot.decorators';
 
 import {getEntries} from "../../../utils/dropdown";
-import * as DropdownRootHelpers from "./DropdownRoot.helpers";
 import {findByDisplayNameRegex} from "../../../utils/tests";
+import * as DropdownRootHelpers from "./DropdownRoot.helpers";
 const { modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline } = DropdownRootHelpers;
 
 describe('DropdownRoot helpers', () => {

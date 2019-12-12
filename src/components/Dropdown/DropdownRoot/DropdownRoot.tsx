@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 
+import {WithStyles} from "react-jss";
 import classNames from "classnames";
 
 import DropdownHead from "../DropdownHead";
@@ -7,7 +8,6 @@ import DropdownBody from "../DropdownBody";
 
 import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.helpers';
 import {getKey} from "../../../utils/dropdown";
-import {WithStyles} from "react-jss";
 import dropdownRootStyles from "./DropdownRoot.styles";
 
 export interface IDropdownOptionsElement {

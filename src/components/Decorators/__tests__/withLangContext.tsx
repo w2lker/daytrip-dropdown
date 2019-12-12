@@ -1,6 +1,7 @@
 import React, {createContext, ReactElement} from "react";
-import withLangContext from "../withLangContext";
 import {mount, shallow} from "enzyme";
+
+import withLangContext from "../withLangContext";
 
 const setup = () => {
   const SampleComponent = ():ReactElement => {

@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import {mount, shallow} from "enzyme";
+
 import withControlledSwitcher from "../withControlledSwitcher";
 
 const setup = () => {

@@ -5,7 +5,6 @@ import {WithStyles} from "react-jss";
 
 import dropdownBodyElementStyles from "./DropdownBodyElement.styles";
 
-
 export interface IDropdownBodyElementProps extends WithStyles<typeof dropdownBodyElementStyles>{
   content: string;
   selected?: boolean;

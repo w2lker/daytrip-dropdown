@@ -5,6 +5,7 @@ import { mount } from 'enzyme';
 import DropdownBody, { IDropdownBodyProps } from './DropdownBody';
 import DropdownBodyDecorated from './DropdownBody.decorators';
 import dropdownBodyStyles from './DropdownBody.styles';
+
 import {getKey, getValue} from "../../../utils/dropdown";
 
 const setup = () => {

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
+
 import {WithStyles} from "react-jss";
+
 import dropdownBodyStyles from "./DropdownBody.styles";
 import DropdownBodyElement from "./DropdownBodyElement";
 import DropdownBodyFilter from "./DropdownBodyFilter";
-import {getEntries, getKey, getValue} from "../../../utils/dropdown";
 import DropdownBodyEmpty from "./DropdownBodyEmpty";
+
+import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
+import {getEntries, getKey, getValue} from "../../../utils/dropdown";
 
 export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles> {
     opened: boolean;

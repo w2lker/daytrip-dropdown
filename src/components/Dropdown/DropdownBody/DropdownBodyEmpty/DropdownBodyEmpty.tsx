@@ -3,8 +3,9 @@ import {WithStyles} from "react-jss";
 
 import dropdownBodyEmptyStyles from "./DropdownBodyEmpty.styles";
 import DropdownLang from "../../DropdownRoot/DropdownRoot.lang";
-import lang from "../../../../const/lang";
+
 import {emptySearch} from "./DropdownBodyEmpty.svg";
+import lang from "../../../../const/lang";
 
 export interface IDropdownBodyEmptyProps extends WithStyles<typeof dropdownBodyEmptyStyles>{
   isEmpty: boolean;

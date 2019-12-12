@@ -3,11 +3,11 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import DropdownBodyEmpty, { IDropdownBodyEmptyProps } from './DropdownBodyEmpty';
-import DropdownLang from "../../DropdownRoot/DropdownRoot.lang";
 import DropdownBodyEmptyDecorated from './DropdownBodyEmpty.decorators';
+import DropdownLang from "../../DropdownRoot/DropdownRoot.lang";
+import withLangContext from "../../../Decorators/withLangContext";
 
 import dropdownBodyEmptyStyles from './DropdownBodyEmpty.styles';
-import withLangContext from "../../../Decorators/withLangContext";
 
 const setup = () => {
   const classes = {
