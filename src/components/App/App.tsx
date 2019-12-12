@@ -13,6 +13,7 @@ const App: React.FC = () => {
         placeholder='Select your residence country'
         options={countries}
         onSelect={onChange}
+        rows={6}
       />
     </div>
   );

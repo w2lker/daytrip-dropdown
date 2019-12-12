@@ -10,11 +10,11 @@ const lang = {
     emptyStates: {
       noOptionsProvided: {
         title: 'List Is Empty',
-        description: 'Most likely there is no matches based on another form elements. Please check the form and correct details. In case issue remains please contact support',
+        description: 'Most likely there is no matches based on another elements. Please check the form',
       },
       noFilteredOptions: {
         title: 'No Entries Matching',
-        description: 'Please check your search request to filter list of countries to display. In case you can’t find appropriate entry contact the Support',
+        description: 'Please check your search request to filter list of countries to display',
       },
     },
   },

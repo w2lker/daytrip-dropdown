@@ -8,6 +8,7 @@ const dropdownBodyFilterStyles = {
   magnify: {
     lineHeight: '14px',
     paddingRight: 15,
+    paddingTop: 2,
   },
   input: {
     flexGrow: 1,

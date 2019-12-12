@@ -28,9 +28,10 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
     // Fallback if there is no context provided
     const contextLang = useContext(DropdownLang) as typeof lang.dropdown;
     const defaultTexts = contextLang && contextLang.filter ? contextLang.filter : { placeholder: '' };
+    const performFocus = () => inputRef && inputRef.current && inputRef.current.focus && inputRef.current.focus();
 
     useEffect(() => {
-        inputRef && inputRef.current && inputRef.current.focus && inputRef.current.focus();
+      performFocus();
     });
 
     const handleFilterChange = (event: React.FormEvent<HTMLInputElement>) =>
@@ -62,7 +63,10 @@ const DropdownBodyFilter: React.FC<IDropdownBodyFilterProps> = (props) => {
 
     return (
         <div className={classes.wrapper}>
-            <div className={classes.magnify}>
+            <div
+              className={classes.magnify}
+              onClick={performFocus}
+            >
               {magnify()}
             </div>
             <input
