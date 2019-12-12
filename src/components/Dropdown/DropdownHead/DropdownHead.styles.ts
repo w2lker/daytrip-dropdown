@@ -4,7 +4,8 @@ const dropdownHeadStyles = {
     boxShadow: '0 2px 9px 0 rgba(146,166,176,0.15)',
     borderRadius: 4,
     position: 'relative',
-    padding: '16px 30px'
+    padding: '16px 30px',
+    marginBottom: 10
   },
   label: {
     paddingBottom: 6,
