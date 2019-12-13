@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import {WithStyles} from "react-jss";
-
 import dropdownBodyStyles from "./DropdownBody.styles";
 import DropdownBodyElement from "./DropdownBodyElement";
 import DropdownBodyFilter from "./DropdownBodyFilter";
@@ -10,7 +8,7 @@ import DropdownBodyEmpty from "./DropdownBodyEmpty";
 import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
 import {getEntries, getKey, getValue} from "../../../utils/dropdown";
 
-export interface IDropdownBodyProps extends WithStyles<typeof dropdownBodyStyles> {
+export interface IDropdownBodyProps {
     opened: boolean;
     selected?: string;
     options: IDropdownOptionsArray;
@@ -28,7 +26,7 @@ const filterOptions = (filter: string, options: IDropdownOptionsArray, caseInsen
 
 
 const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
-    const { opened, selected, options, onSelect, onClose, classes, caseInsensitiveSearch } = props;
+    const { opened, selected, options, onSelect, onClose, caseInsensitiveSearch } = props;
     const [filter, setFilter] = useState('');
     const [focused, setFocused] = useState('');
 
@@ -36,9 +34,8 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
       return null;
     }
 
-    const rows = (props.rows && props.rows > 5) ? props.rows : 5;
-
     const filtered = filterOptions(filter, options, caseInsensitiveSearch);
+    const classes = dropdownBodyStyles(props);
 
     const focusSwitch = (next: boolean) => () => {
       if (!filtered) return;
@@ -86,10 +83,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
             onSelectNext={ focusSwitch(true) }
             onSelectPrev={ focusSwitch(false) }
           />
-          <div
-            className={classes.contentWrapper}
-            style={{ height: rows * 36 +  30}}
-          >
+          <div className={classes.contentWrapper}>
             {renderElements}
             <DropdownBodyEmpty
               isEmpty={!(options && options.length)}

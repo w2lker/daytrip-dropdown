@@ -22,11 +22,7 @@ exports[`DropdownRoot component match snapshot 1`] = `
         </DropdownHead>
       </WithStyles(DropdownHead)>
     </JssContextSubscriber>
-    <JssContextSubscriber opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]}>
-      <WithStyles(DropdownBody) innerRef={{...}} opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} jssContext={{...}} theme={{...}}>
-        <DropdownBody opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} classes={{...}} />
-      </WithStyles(DropdownBody)>
-    </JssContextSubscriber>
+    <DropdownBody opened={false} selected={[undefined]} options={{...}} rows={5} caseInsensitiveSearch={true} onSelect={[Function: mockConstructor]} onClose={[Function: onClose]} />
   </div>
 </DropdownRoot>"
 `;

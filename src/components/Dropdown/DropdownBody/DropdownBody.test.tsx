@@ -3,7 +3,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import DropdownBody, { IDropdownBodyProps } from './DropdownBody';
-import DropdownBodyDecorated from './DropdownBody.decorators';
 import dropdownBodyStyles from './DropdownBody.styles';
 
 import {getKey, getValue} from "../../../utils/dropdown";
@@ -94,21 +93,16 @@ describe('DropdownBody styles', () => {
   it('contains principle classes', () => {
     const { classesKeys } = setup();
     expect(dropdownBodyStyles).toBeDefined();
+
+    let classes: Record<string, string>;
+    const TestComp: React.FC = () => {
+      classes = dropdownBodyStyles({props: 7});
+      return null;
+    };
+    mount(<TestComp />);
     classesKeys.forEach((keyValue) => {
       // @ts-ignore
-      expect(dropdownBodyStyles[keyValue]).toBeDefined();
-    });
-  });
-});
-
-describe('DropdownBody decorators', () => {
-  it('provides styled classes from decorators', () => {
-    const { classesKeys, sampleProps } = setup();
-    const component = mount(<DropdownBodyDecorated {...sampleProps} />);
-    // @ts-ignore
-    const assignedClasses = component.find('DropdownBody').props().classes;
-    classesKeys.forEach(keyValue => {
-      expect(assignedClasses[keyValue]).toBeDefined();
+      expect(classes[keyValue]).toBeDefined();
     });
   });
 });

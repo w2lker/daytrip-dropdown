@@ -1,3 +1,3 @@
-import DropdownBody from "./DropdownBody.decorators";
+import DropdownBody from "./DropdownBody";
 
 export default DropdownBody;
