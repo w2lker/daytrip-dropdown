@@ -1,22 +1,22 @@
 import {IDropdownOptionsArray} from "./DropdownRoot";
 
 import {sendWarning} from "../../../utils/warn";
-import {getEntries} from "../../../utils/dropdown";
+import {getDropdownOptionEntries} from "../../../utils/dropdown";
+
+export function modifyDropdownOptionsToSingleKey(opts: IDropdownOptionsArray): IDropdownOptionsArray {
+  return opts.reduce( (accumulator, option) => {
+    const optionsArray = Object.keys(option).map( (key) => ({[key]: option[key]}));
+    return accumulator.concat(optionsArray);
+  }, [] as IDropdownOptionsArray);
+}
 
 export function modifyDropdownOptionsDuplicates(opts: IDropdownOptionsArray): IDropdownOptionsArray {
     let collector: { [key: string]: string } = {};
-
     if (!opts) return [];
 
     collector = opts.reduce( (collection, item) => {
-        const keys = Object.keys(item);
-        if (keys.length > 1) {
-            sendWarning(`Dropdown options should contain only one pair key-value per array item. For element ${item} it skipped some elements`);
-        }
-
-        const {key, value} = getEntries(item);
+        const {key, value} = getDropdownOptionEntries(item);
         if (!collection[key]) collection[key] = value;
-
         return collection;
     }, collector);
 
@@ -27,16 +27,15 @@ export function modifyDropdownOptionsDuplicates(opts: IDropdownOptionsArray): ID
 
     sendWarning('Dropdown options should contain unique elements. Some of options are skipped to provide component appropriate functionality');
 
-    return collectedKeys
-        .map( (key) => ({
-            [key]: collector[key],
-        })
+    return collectedKeys.map( (key) => ({
+        [key]: collector[key],
+      })
     );
 }
 
 export function modifyDropdownOptionsMultiline(opts: IDropdownOptionsArray): IDropdownOptionsArray {
     return opts.map( (opt) => {
-        const {key, value} = getEntries(opt);
+        const {key, value} = getDropdownOptionEntries(opt);
         return {[key]: value.replace('\n', '')}
     })
 }

@@ -6,8 +6,12 @@ import classNames from "classnames";
 import DropdownHead from "../DropdownHead";
 import DropdownBody from "../DropdownBody";
 
-import {modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline} from './DropdownRoot.helpers';
-import {getKey} from "../../../utils/dropdown";
+import {
+  modifyDropdownOptionsDuplicates,
+  modifyDropdownOptionsMultiline,
+  modifyDropdownOptionsToSingleKey
+} from './DropdownRoot.helpers';
+import {getDropdownOptionKey} from "../../../utils/dropdown";
 import dropdownRootStyles from "./DropdownRoot.styles";
 
 export interface IDropdownOptionsElement {
@@ -36,7 +40,8 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
 
     // Filter options array to display only unique key value to prevent issue with onSelect callback validation
     useEffect(() => {
-        const withoutDuplicates = modifyDropdownOptionsDuplicates(options);
+        const withSingleKey = modifyDropdownOptionsToSingleKey(options);
+        const withoutDuplicates  = modifyDropdownOptionsDuplicates(withSingleKey);
         modifiedOptions = modifyDropdownOptionsMultiline(withoutDuplicates);
     }, [options]);
 
@@ -55,7 +60,7 @@ const DropdownRoot: React.FC<IDropdownProps> = (props) => {
     });
 
     const selectedOption = selected && modifiedOptions && modifiedOptions.length ?
-        modifiedOptions.find( (opt) => getKey(opt) === selected)
+        modifiedOptions.find( (opt) => getDropdownOptionKey(opt) === selected)
       : null;
 
     const wrapperClass = classNames(classes.root, className);

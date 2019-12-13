@@ -6,29 +6,42 @@ import DropdownRoot, {IDropdownOptionsArray, IDropdownProps} from "./DropdownRoo
 import dropdownRootStyles from "./DropdownRoot.styles";
 import DropdownRootDecorated from './DropdownRoot.decorators';
 
-import {getEntries} from "../../../utils/dropdown";
+import {getDropdownOptionEntries} from "../../../utils/dropdown";
 import {findByDisplayNameRegex} from "../../../utils/tests";
 import * as DropdownRootHelpers from "./DropdownRoot.helpers";
-const { modifyDropdownOptionsDuplicates, modifyDropdownOptionsMultiline } = DropdownRootHelpers;
+const {
+  modifyDropdownOptionsDuplicates,
+  modifyDropdownOptionsMultiline,
+  modifyDropdownOptionsToSingleKey
+} = DropdownRootHelpers;
 
 describe('DropdownRoot helpers', () => {
+  it('modifyDropdownOptionsToSingleKey works', () => {
+    const testArray: IDropdownOptionsArray = [
+      { key1: 'value1', key2: 'value2' }
+    ];
+    const outputArray = modifyDropdownOptionsToSingleKey(testArray);
+    expect(outputArray.length).toBe(2);
+  });
+
   it('modifyDropdownOptionsDuplicates works', () => {
       const testArray: IDropdownOptionsArray = [
-        {'key1': 'value1'},
-        {'key1': 'value1'},
-        {'key1': 'value1'},
-        {'key2': 'value2'},
+        {key1: 'value1'},
+        {key1: 'value1'},
+        {key1: 'value1'},
+        {key2: 'value2'},
       ];
       const outputArray = modifyDropdownOptionsDuplicates(testArray);
       expect(outputArray.length).toBe(2);
   });
+
   it('modifyDropdownOptionsMultiline works', () => {
     const expectedArray: IDropdownOptionsArray = [
-      {'key1': 'value1 value1 value1 value1'},
-      {'key2': 'value1 value1 value1 value1'},
+      {key1: 'value1 value1 value1 value1'},
+      {key2: 'value1 value1 value1 value1'},
     ];
     const inputArray = expectedArray.map( item => {
-      const {key, value} = getEntries(item);
+      const {key, value} = getDropdownOptionEntries(item);
       return {[key]: value.replace(' ', ' \n')}
     });
     const outputArray = modifyDropdownOptionsMultiline(inputArray);
@@ -72,15 +85,20 @@ describe('DropdownRoot component', () => {
       expect(component.debug()).toMatchSnapshot();
   });
   it('fires helpers on receiving options array', () => {
+    const multiKey = jest.spyOn(DropdownRootHelpers,'modifyDropdownOptionsToSingleKey')
+      .mockImplementation( (val) => val );
     const duplicatesSpy = jest.spyOn(DropdownRootHelpers, 'modifyDropdownOptionsDuplicates')
       .mockImplementation( (val) => val );
     const multilineSpy = jest.spyOn(DropdownRootHelpers, 'modifyDropdownOptionsMultiline')
       .mockImplementation( (val) => val );
+
     const { sampleProps } = setup();
     const component = mount(<DropdownRoot {...sampleProps} />);
     // Initial render
     expect(DropdownRootHelpers.modifyDropdownOptionsDuplicates).toBeCalledTimes(1);
     expect(DropdownRootHelpers.modifyDropdownOptionsMultiline).toBeCalledTimes(1);
+    expect(DropdownRootHelpers.modifyDropdownOptionsToSingleKey).toBeCalledTimes(1);
+
     const newOptions = [...sampleProps.options, {'opt3': 'value3'}];
     const newProps = {
       ...sampleProps,
@@ -91,8 +109,10 @@ describe('DropdownRoot component', () => {
     // Component Did receive props
     expect(DropdownRootHelpers.modifyDropdownOptionsDuplicates).toBeCalledTimes(2);
     expect(DropdownRootHelpers.modifyDropdownOptionsMultiline).toBeCalledTimes(2);
+    expect(DropdownRootHelpers.modifyDropdownOptionsToSingleKey).toBeCalledTimes(2);
     duplicatesSpy.mockRestore();
     multilineSpy.mockRestore();
+    multiKey.mockRestore();
   });
   it('renders head and body', () => {
     const { sampleProps } = setup();

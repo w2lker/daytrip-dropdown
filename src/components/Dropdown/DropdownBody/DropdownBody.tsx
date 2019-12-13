@@ -6,7 +6,7 @@ import DropdownBodyFilter from "./DropdownBodyFilter";
 import DropdownBodyEmpty from "./DropdownBodyEmpty";
 
 import {IDropdownOptionsArray} from "../DropdownRoot/DropdownRoot";
-import {getEntries, getKey, getValue} from "../../../utils/dropdown";
+import {getDropdownOptionEntries, getDropdownOptionKey, getDropdownOptionValue} from "../../../utils/dropdown";
 
 export interface IDropdownBodyProps {
     opened: boolean;
@@ -21,7 +21,7 @@ export interface IDropdownBodyProps {
 const filterOptions = (filter: string, options: IDropdownOptionsArray, caseInsensitive?: boolean): IDropdownOptionsArray => {
   const insensitive = caseInsensitive ? 'i' : '';
   const regExpFilter = new RegExp(filter, insensitive);
-  return options.filter( (opt) => getValue(opt).match(regExpFilter));
+  return options.filter( (opt) => getDropdownOptionValue(opt).match(regExpFilter));
 };
 
 
@@ -40,10 +40,10 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     const focusSwitch = (next: boolean) => () => {
       if (!filtered) return;
       const setNextFocused = (index: number) => {
-        const next = getKey(filtered[index]);
+        const next = getDropdownOptionKey(filtered[index]);
         setFocused(next);
       };
-      const index = filtered.findIndex( (item) =>  getKey(item) === focused);
+      const index = filtered.findIndex( (item) =>  getDropdownOptionKey(item) === focused);
       const filteredLast = filtered.length - 1;
       // Can't select next to last and prev to first element
       if (index === filteredLast && next) return;
@@ -56,7 +56,7 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     };
 
     const renderElements = filtered.map( (item) => {
-      const {key, value: content} = getEntries(item);
+      const {key, value: content} = getDropdownOptionEntries(item);
       const handleSelect = () => {
         onSelect(key);
         onClose();

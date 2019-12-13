@@ -9,7 +9,7 @@ import withLangContext from "../../Decorators/withLangContext";
 
 import dropdownHeadStyles from './DropdownHead.styles';
 import { IDropdownOptionsElement } from "../DropdownRoot/DropdownRoot";
-import {getValue} from "../../../utils/dropdown";
+import {getDropdownOptionValue} from "../../../utils/dropdown";
 
 const setup = () => {
   const classes = {
@@ -51,7 +51,7 @@ describe('DropdownHead component', () => {
     const { classes, sampleProps } = setup();
     const component = shallow(<DropdownHead {...sampleProps} />);
     expect(component.find(`.${classes.label}`).text()).toBe(sampleProps.label);
-    expect(component.find(`.${classes.content}`).text()).toBe(getValue(sampleProps.selectedItem as IDropdownOptionsElement));
+    expect(component.find(`.${classes.content}`).text()).toBe(getDropdownOptionValue(sampleProps.selectedItem as IDropdownOptionsElement));
     if (sampleProps.opened) {
       expect(component.find(`.${classes.caretReverted}`).length).toBe(1);
     }
