@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+"<WithControlledSwitcher(undefined) customProp=\\"customProp-passes\\" select=\\"someValue\\" onSelect={[Function: mockConstructor]}>
+  <SampleComponent customProp=\\"customProp-passes\\" select=\\"someValue\\" selected=\\"\\" onSelect={[Function: setControlledValueWithCallback]} />
+</WithControlledSwitcher(undefined)>"
+`;
