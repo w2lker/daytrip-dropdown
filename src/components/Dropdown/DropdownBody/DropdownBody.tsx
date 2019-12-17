@@ -29,13 +29,13 @@ const DropdownBody: React.FC<IDropdownBodyProps> = (props) => {
     const { opened, selected, options, onSelect, onClose, caseInsensitiveSearch } = props;
     const [filter, setFilter] = useState('');
     const [focused, setFocused] = useState('');
+    const classes = dropdownBodyStyles(props);
 
     if (!opened) {
       return null;
     }
 
     const filtered = filterOptions(filter, options, caseInsensitiveSearch);
-    const classes = dropdownBodyStyles(props);
 
     const focusSwitch = (next: boolean) => () => {
       if (!filtered) return;
